@@ -48,7 +48,10 @@ export default class CheckboxReorderPlugin extends Plugin {
 
 	async saveSettings() {
 		await this.saveData(this.settings);
-		this.reorderCheckboxes(this.app.workspace.getActiveViewOfType(MarkdownView)?.editor)
+		if(this.settings.autoReorder){
+			console.log('triggered')
+			this.reorderCheckboxes(this.app.workspace.getActiveViewOfType(MarkdownView)?.editor)
+		}
 	}
 
 	reorderCheckboxes(editor: Editor) {
